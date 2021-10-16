@@ -21,7 +21,7 @@ async def welcome(ctx):
     same = 'Hey ' + str(ctx.author.mention), 'Hey Baby', 'Hellooo!', 'Eat Shit ' + str(ctx.author.mention)
     response = random.choice(same)
     await ctx.send(response)
-
+#2
 @bot.command(name='send', help=' -This will send money to someone.')
 async def sharing(ctx, who, share: int):
     my_file = open("MoneyBank.txt")
