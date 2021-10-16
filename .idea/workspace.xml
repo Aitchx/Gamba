@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="69a5fc16-ab1e-4b11-9932-44cfebe38d58" name="Changes" comment="Changes" />
+    <list default="true" id="69a5fc16-ab1e-4b11-9932-44cfebe38d58" name="Changes" comment="nothing">
+      <change beforePath="$PROJECT_DIR$/MoneyBank.txt" beforeDir="false" afterPath="$PROJECT_DIR$/MoneyBank.txt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,7 +28,7 @@
     </favorite-branches>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="main_test" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -149,7 +151,21 @@
       <option name="project" value="LOCAL" />
       <updated>1634411464887</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="2">
+      <created>1634411640676</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1634411640676</updated>
+    </task>
+    <task id="LOCAL-00010" summary="nothing">
+      <created>1634411720966</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1634411720966</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -181,10 +197,11 @@
     <MESSAGE value="I changed in MoneyBank.txt" />
     <MESSAGE value="I changed a few things" />
     <MESSAGE value="Main2 changes to Main" />
-    <MESSAGE value="2" />
     <MESSAGE value="Changed token to a dif bot" />
     <MESSAGE value="Changes" />
     <MESSAGE value="9" />
-    <option name="LAST_COMMIT_MESSAGE" value="9" />
+    <MESSAGE value="2" />
+    <MESSAGE value="nothing" />
+    <option name="LAST_COMMIT_MESSAGE" value="nothing" />
   </component>
 </project>
