@@ -21,6 +21,97 @@ async def welcome(ctx):
     same = 'Hey ' + str(ctx.author.mention), 'Hey Baby', 'Hellooo!', 'Eat Shit ' + str(ctx.author.mention)
     response = random.choice(same)
     await ctx.send(response)
+#2
+@bot.command(name='send', help=' -This will send money to someone.')
+async def sharing(ctx, who, share: int):
+    my_file = open("MoneyBank.txt")
+    string_list = my_file.readlines()
+    my_file.close()
+    clean_list = []
+    for i in string_list:
+        clean_list.append(i.strip())
+    x = clean_list.index(str(ctx.author))
+    string_list[x + 1].strip()
+    string_list[x + 1] = str(int(string_list[x + 1]) - share)
+    y = int(string_list[x + 1].strip())
+    balance = 'New Balance: $' + "{:,}".format(y)
+    if (x + 2) == len(string_list):
+        my_file = open("MoneyBank.txt", "w")
+        new_file_contents = "".join(string_list)
+        my_file.write(new_file_contents)
+        my_file.close()
+    else:
+        string_list[x + 1] += str('\n')
+        my_file = open("MoneyBank.txt", "w")
+        new_file_contents = "".join(string_list)
+        my_file.write(new_file_contents)
+        my_file.close()
+    who = str(who).strip('<>')
+    who = str(who).strip('@!')
+    who = str(who).strip('@&')
+    username = await bot.fetch_user(who)
+    print(username)
+    my_file = open("MoneyBank.txt")
+    string_list = my_file.readlines()
+    my_file.close()
+    clean_list = []
+    for i in string_list:
+        clean_list.append(i.strip())
+    x = clean_list.index(str(username))
+    string_list[x + 1].strip()
+    string_list[x + 1] = str(int(string_list[x + 1]) + share)
+    y = int(string_list[x + 1].strip())
+    balance = 'New Balance: $' + "{:,}".format(y)
+    if (x + 2) == len(string_list):
+        my_file = open("MoneyBank.txt", "w")
+        new_file_contents = "".join(string_list)
+        my_file.write(new_file_contents)
+        my_file.close()
+    else:
+        string_list[x + 1] += str('\n')
+        my_file = open("MoneyBank.txt", "w")
+        new_file_contents = "".join(string_list)
+        my_file.write(new_file_contents)
+        my_file.close()
+    await ctx.send("Sent $" + "{:,}".format(share) + ' to ' + str(username))
+
+
+@bot.command(name='admin', help=' -This will send money to someone.')
+async def admin(ctx, who, share: int):
+    if ctx.author == await bot.fetch_user(299579178104258563):
+        who = str(who).strip('<>')
+        who = str(who).strip('@!')
+        who = str(who).strip('@&')
+        username = await bot.fetch_user(who)
+        my_file = open("MoneyBank.txt")
+        string_list = my_file.readlines()
+        my_file.close()
+        clean_list = []
+        for i in string_list:
+            clean_list.append(i.strip())
+        x = clean_list.index(str(username))
+        string_list[x + 1].strip()
+        string_list[x + 1] = str(int(string_list[x + 1]) + share)
+        y = int(string_list[x + 1].strip())
+        if (x + 2) == len(string_list):
+            my_file = open("MoneyBank.txt", "w")
+            new_file_contents = "".join(string_list)
+            my_file.write(new_file_contents)
+            my_file.close()
+        else:
+            string_list[x + 1] += str('\n')
+            my_file = open("MoneyBank.txt", "w")
+            new_file_contents = "".join(string_list)
+            my_file.write(new_file_contents)
+            my_file.close()
+        await ctx.send("Sent $" + "{:,}".format(share) + ' to ' + str(username))
+    else:
+        await ctx.send("You can't use this command")
+
+
+
+
+
 
 class Gambling(commands.Cog):
 
@@ -145,8 +236,8 @@ class Gambling(commands.Cog):
                         clean_list.append(i.strip())
                     x = clean_list.index(str(ctx.author))
                     string_list[x + 1].strip()
-                    if (total - total_c) >= 2:
-                        string_list[x + 1] = str(int(string_list[x + 1]) + int(bet * 2.5))
+                    if (total - total_c) > 2:
+                        string_list[x + 1] = str(int(string_list[x + 1]) + int(bet * 2.3))
                     else:
                         string_list[x + 1] = str(int(string_list[x + 1]) + (bet * 2))
                     y = int(string_list[x + 1].strip())
@@ -171,7 +262,7 @@ class Gambling(commands.Cog):
                                                 "\nDice 1 = " + '**' + str(dice_1) + '**' + '\n'
                                                 "Dice 2 = " + '**' + str(dice_2) + '**' + '\n'
                                                 "Total = " + '**' + str(total) + '**' + '\n' +
-                                                response + str(ctx.author.mention) +
+                                                response + ' ' + str(ctx.author.mention) +
                                                 "\n" + str(balance), color=7289)
                     await ctx.send(embed=embed)
                 elif total_c == total:
