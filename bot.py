@@ -108,11 +108,6 @@ async def admin(ctx, who, share: int):
     else:
         await ctx.send("You can't use this command")
 
-
-
-
-
-
 class Gambling(commands.Cog):
 
     @commands.command(name='new', help='-Makes you a bank account!')
