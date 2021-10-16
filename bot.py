@@ -146,7 +146,7 @@ class Gambling(commands.Cog):
                     x = clean_list.index(str(ctx.author))
                     string_list[x + 1].strip()
                     if (total - total_c) >= 2:
-                        string_list[x + 1] = str(int(string_list[x + 1]) + (bet * 2.5))
+                        string_list[x + 1] = str(int(string_list[x + 1]) + int(bet * 2.5))
                     else:
                         string_list[x + 1] = str(int(string_list[x + 1]) + (bet * 2))
                     y = int(string_list[x + 1].strip())
