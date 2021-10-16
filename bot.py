@@ -30,51 +30,46 @@ async def sharing(ctx, who, share: int):
     clean_list = []
     for i in string_list:
         clean_list.append(i.strip())
-    x = clean_list.index(str(ctx.author))
-    string_list[x + 1].strip()
-    string_list[x + 1] = str(int(string_list[x + 1]) - share)
-    y = int(string_list[x + 1].strip())
-    balance = 'New Balance: $' + "{:,}".format(y)
-    if (x + 2) == len(string_list):
-        my_file = open("MoneyBank.txt", "w")
-        new_file_contents = "".join(string_list)
-        my_file.write(new_file_contents)
-        my_file.close()
-    else:
-        string_list[x + 1] += str('\n')
-        my_file = open("MoneyBank.txt", "w")
-        new_file_contents = "".join(string_list)
-        my_file.write(new_file_contents)
-        my_file.close()
-    who = str(who).strip('<>')
-    who = str(who).strip('@!')
-    who = str(who).strip('@&')
-    username = await bot.fetch_user(who)
-    print(username)
-    my_file = open("MoneyBank.txt")
-    string_list = my_file.readlines()
-    my_file.close()
-    clean_list = []
-    for i in string_list:
-        clean_list.append(i.strip())
-    x = clean_list.index(str(username))
-    string_list[x + 1].strip()
-    string_list[x + 1] = str(int(string_list[x + 1]) + share)
-    y = int(string_list[x + 1].strip())
-    balance = 'New Balance: $' + "{:,}".format(y)
-    if (x + 2) == len(string_list):
-        my_file = open("MoneyBank.txt", "w")
-        new_file_contents = "".join(string_list)
-        my_file.write(new_file_contents)
-        my_file.close()
-    else:
-        string_list[x + 1] += str('\n')
-        my_file = open("MoneyBank.txt", "w")
-        new_file_contents = "".join(string_list)
-        my_file.write(new_file_contents)
-        my_file.close()
-    await ctx.send("Sent $" + "{:,}".format(share) + ' to ' + str(username))
+    print(clean_list)
+    if str(ctx.author) not in clean_list:
+        await ctx.send('You do not own a Bank Account ' + ctx.author.mention + ' please use "!new"')
 
+    else:
+        x = clean_list.index(str(ctx.author))
+        y = clean_list[x + 1].strip()
+        if int(y) < share:
+            await ctx.send("You don't have enough to bet that much idiot")
+        elif share <= 0:
+            await ctx.send("You can't send that much moron")
+        else:
+            who = str(who).strip('<>')
+            who = str(who).strip('@!')
+            who = str(who).strip('@&')
+            username = await bot.fetch_user(who)
+            print(username)
+            my_file = open("MoneyBank.txt")
+            string_list = my_file.readlines()
+            my_file.close()
+            clean_list = []
+            for i in string_list:
+                clean_list.append(i.strip())
+            x = clean_list.index(str(username))
+            string_list[x + 1].strip()
+            string_list[x + 1] = str(int(string_list[x + 1]) + share)
+            y = int(string_list[x + 1].strip())
+            balance = 'New Balance: $' + "{:,}".format(y)
+            if (x + 2) == len(string_list):
+                my_file = open("MoneyBank.txt", "w")
+                new_file_contents = "".join(string_list)
+                my_file.write(new_file_contents)
+                my_file.close()
+            else:
+                string_list[x + 1] += str('\n')
+                my_file = open("MoneyBank.txt", "w")
+                new_file_contents = "".join(string_list)
+                my_file.write(new_file_contents)
+                my_file.close()
+            await ctx.send("Sent $" + "{:,}".format(share) + ' to ' + str(username))
 
 @bot.command(name='admin', help=' -This will send money to someone.')
 async def admin(ctx, who, share: int):
@@ -179,8 +174,6 @@ class Gambling(commands.Cog):
         balance = str(balance).replace("'", '')
         balance = str(balance).strip(",")
         await ctx.send(balance + ' ' + str(ctx.author.mention))
-
-
 
     @commands.command(name='roll', help='-Simulates rolling dice agaisnt Arnold|Ex: !roll_dice <total> <bet>')
     @commands.cooldown(rate=1, per=2)
