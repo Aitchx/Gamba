@@ -194,7 +194,7 @@ class Gambling(commands.Cog):
         await ctx.send(balance + ' ' + str(ctx.author.mention))
 
 
-    @commands.command(name='challenge', help=' -Roll dice against someone')
+    @commands.command(name='challenge', help=' -Roll dice against someone, Ex !challenge @user bet')
     async def fight(self, ctx, who, bet: int):
         who = str(who).strip('<>')
         who = str(who).strip('@!')
