@@ -43,7 +43,7 @@ async def sharing(ctx, who, share: int):
         x = clean_list.index(str(ctx.author))
         y = clean_list[x + 1].strip()
         if int(y) < share:
-            await ctx.send("You don't have enough to bet that much idiot")
+            await ctx.send("You don't have enough to send that much idiot")
         elif share <= 0:
             await ctx.send("You can't send that much moron")
         elif ctx.author == username:
