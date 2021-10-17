@@ -24,10 +24,15 @@ async def welcome(ctx):
 #2
 @bot.command(name='send', help=' -This will send money to someone.')
 async def sharing(ctx, who, share: int):
+    print('Send Command ' + ctx.author)
     my_file = open("MoneyBank.txt")
     string_list = my_file.readlines()
     my_file.close()
     clean_list = []
+    who = str(who).strip('<>')
+    who = str(who).strip('@!')
+    who = str(who).strip('@&')
+    username = await bot.fetch_user(who)
     for i in string_list:
         clean_list.append(i.strip())
     print(clean_list)
@@ -41,12 +46,29 @@ async def sharing(ctx, who, share: int):
             await ctx.send("You don't have enough to bet that much idiot")
         elif share <= 0:
             await ctx.send("You can't send that much moron")
+        elif ctx.author == username:
+            await ctx.send("You can't send money to your self moron.")
         else:
-            who = str(who).strip('<>')
-            who = str(who).strip('@!')
-            who = str(who).strip('@&')
-            username = await bot.fetch_user(who)
-            print(username)
+            my_file = open("MoneyBank.txt")
+            string_list = my_file.readlines()
+            my_file.close()
+            clean_list = []
+            for i in string_list:
+                clean_list.append(i.strip())
+            x = clean_list.index(str(ctx.author))
+            string_list[x + 1].strip()
+            string_list[x + 1] = str(int(string_list[x + 1]) - share)
+            if (x + 2) == len(string_list):
+                my_file = open("MoneyBank.txt", "w")
+                new_file_contents = "".join(string_list)
+                my_file.write(new_file_contents)
+                my_file.close()
+            else:
+                string_list[x + 1] += str('\n')
+                my_file = open("MoneyBank.txt", "w")
+                new_file_contents = "".join(string_list)
+                my_file.write(new_file_contents)
+                my_file.close()
             my_file = open("MoneyBank.txt")
             string_list = my_file.readlines()
             my_file.close()
@@ -56,8 +78,6 @@ async def sharing(ctx, who, share: int):
             x = clean_list.index(str(username))
             string_list[x + 1].strip()
             string_list[x + 1] = str(int(string_list[x + 1]) + share)
-            y = int(string_list[x + 1].strip())
-            balance = 'New Balance: $' + "{:,}".format(y)
             if (x + 2) == len(string_list):
                 my_file = open("MoneyBank.txt", "w")
                 new_file_contents = "".join(string_list)
@@ -73,6 +93,7 @@ async def sharing(ctx, who, share: int):
 
 @bot.command(name='admin', help=' -This will send money to someone.')
 async def admin(ctx, who, share: int):
+    print('Admin ' + ctx.author)
     if ctx.author == await bot.fetch_user(299579178104258563):
         who = str(who).strip('<>')
         who = str(who).strip('@!')
@@ -107,6 +128,7 @@ class Gambling(commands.Cog):
 
     @commands.command(name='new', help='-Makes you a bank account!')
     async def NewBank(self, ctx):
+        print('New Command ' + ctx.author)
         not_new = 0
         f = open("MoneyBank.txt", 'r')
         for line in f:
@@ -124,6 +146,7 @@ class Gambling(commands.Cog):
 
     @commands.command(name='bal', help=' - Well show the amount in your Bank')
     async def bank(self, ctx):
+        print('bal command ' + ctx.author)
         my_file = open("MoneyBank.txt")
         string_list = my_file.readlines()
         my_file.close()
@@ -173,6 +196,7 @@ class Gambling(commands.Cog):
     @commands.command(name='roll', help='-Simulates rolling dice agaisnt Arnold|Ex: !roll_dice <total> <bet>')
     @commands.cooldown(rate=1, per=2)
     async def roll(self, ctx, bet: int):
+        print('Roll Command')
         my_file = open("MoneyBank.txt")
         string_list = my_file.readlines()
         my_file.close()
