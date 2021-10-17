@@ -24,7 +24,7 @@ async def welcome(ctx):
 #2
 @bot.command(name='send', help=' -This will send money to someone.')
 async def sharing(ctx, who, share: int):
-    print('Send Command ' + ctx.author)
+    print('Send Command ' + str(ctx.author))
     my_file = open("MoneyBank.txt")
     string_list = my_file.readlines()
     my_file.close()
@@ -93,7 +93,7 @@ async def sharing(ctx, who, share: int):
 
 @bot.command(name='admin', help=' -This will send money to someone.')
 async def admin(ctx, who, share: int):
-    print('Admin ' + ctx.author)
+    print('Admin ' + str(ctx.author))
     if ctx.author == await bot.fetch_user(299579178104258563):
         who = str(who).strip('<>')
         who = str(who).strip('@!')
@@ -128,7 +128,7 @@ class Gambling(commands.Cog):
 
     @commands.command(name='new', help='-Makes you a bank account!')
     async def NewBank(self, ctx):
-        print('New Command ' + ctx.author)
+        print('New Command ' + str(ctx.author))
         not_new = 0
         f = open("MoneyBank.txt", 'r')
         for line in f:
@@ -146,7 +146,7 @@ class Gambling(commands.Cog):
 
     @commands.command(name='bal', help=' - Well show the amount in your Bank')
     async def bank(self, ctx):
-        print('bal command ' + ctx.author)
+        print('bal command ' + str(ctx.author))
         my_file = open("MoneyBank.txt")
         string_list = my_file.readlines()
         my_file.close()
@@ -196,7 +196,7 @@ class Gambling(commands.Cog):
     @commands.command(name='roll', help='-Simulates rolling dice agaisnt Arnold|Ex: !roll_dice <total> <bet>')
     @commands.cooldown(rate=1, per=2)
     async def roll(self, ctx, bet: int):
-        print('Roll Command')
+        print('Roll Command ' + str(ctx.author))
         my_file = open("MoneyBank.txt")
         string_list = my_file.readlines()
         my_file.close()
