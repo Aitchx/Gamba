@@ -21,7 +21,7 @@ async def welcome(ctx):
     same = 'Hey ' + str(ctx.author.mention), 'Hey Baby', 'Hellooo!', 'Eat Shit ' + str(ctx.author.mention)
     response = random.choice(same)
     await ctx.send(response)
-#2
+
 @bot.command(name='send', help=' -This will send money to someone.')
 async def sharing(ctx, who, share: int):
     my_file = open("MoneyBank.txt")
@@ -174,6 +174,32 @@ class Gambling(commands.Cog):
         balance = str(balance).replace("'", '')
         balance = str(balance).strip(",")
         await ctx.send(balance + ' ' + str(ctx.author.mention))
+
+
+    @commands.command(name='challenge', help=' -Roll dice against someone')
+    async def fight(self, ctx, who, bet: int):
+        my_file = open("MoneyBank.txt")
+        string_list = my_file.readlines()
+        my_file.close()
+        clean_list = []
+        for i in string_list:
+            clean_list.append(i.strip())
+        print(clean_list)
+        if str(ctx.author) not in clean_list:
+            await ctx.send('You do not own a Bank Account ' + ctx.author.mention + ' please use "!new"')
+        else:
+            x = clean_list.index(str(ctx.author))
+            y = clean_list[x + 1].strip()
+            if (int(y) < bet) and (bet != 1):
+                await ctx.send("You don't have enough to bet that much idiot")
+            else:
+                await ctx.send('Y or N')
+
+                def check(m):
+                    return m.content == "Yes"
+
+                msg = await bot.wait_for("message", check=check)
+                await ctx.send(f"Hello {msg.author}!")
 
     @commands.command(name='roll', help='-Simulates rolling dice agaisnt Arnold|Ex: !roll_dice <total> <bet>')
     @commands.cooldown(rate=1, per=2)
