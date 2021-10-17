@@ -218,7 +218,7 @@ class Gambling(commands.Cog):
             c = clean_list[challenged + 1].strip()
             if (int(y) < bet) and (bet != 1):
                 await ctx.send("You don't have enough to bet that much idiot")
-            elif (int(challenged) < bet) and (bet != 1):
+            elif (int(c) < bet) and (bet != 1):
                 await ctx.send("The poor fuck doesn't have enough to bet that much")
             elif username == ctx.author:
                 await ctx.send("You can't challenge yourself dumbfuck")
