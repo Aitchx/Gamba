@@ -267,7 +267,7 @@ class Gambling(commands.Cog):
                             clean_list.append(i.strip())
                         x = clean_list.index(str(ctx.author))
                         string_list[x + 1].strip()
-                        string_list[x + 1] = str(int(string_list[x + 1]) + bet)
+                        string_list[x + 1] = str(int(string_list[x + 1]) + (bet *2))
                         y = int(string_list[x + 1].strip())
                         balance = 'New Balance: $' + "{:,}".format(y)
                         if (x + 2) == len(string_list):
@@ -337,7 +337,7 @@ class Gambling(commands.Cog):
                                 clean_list.append(i.strip())
                             x = clean_list.index(str(username))
                             string_list[x + 1].strip()
-                            string_list[x + 1] = str(int(string_list[x + 1]) + bet)
+                            string_list[x + 1] = str(int(string_list[x + 1]) + (bet*2))
                             if (x + 2) == len(string_list):
                                 my_file = open("MoneyBank.txt", "w")
                                 new_file_contents = "".join(string_list)
