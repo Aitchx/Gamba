@@ -26,7 +26,7 @@
     </favorite-branches>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="main_test" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -149,14 +149,70 @@
       <option name="project" value="LOCAL" />
       <updated>1634411464887</updated>
     </task>
-    <task id="LOCAL-00009" summary="updates">
-      <created>1634449369825</created>
+    <task id="LOCAL-00009" summary="2">
+      <created>1634411640676</created>
       <option name="number" value="00009" />
       <option name="presentableId" value="LOCAL-00009" />
       <option name="project" value="LOCAL" />
-      <updated>1634449369825</updated>
+      <updated>1634411640676</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="nothing">
+      <created>1634411720966</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1634411720966</updated>
+    </task>
+    <task id="LOCAL-00011" summary="updated money values">
+      <created>1634411917003</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1634411917003</updated>
+    </task>
+    <task id="LOCAL-00012" summary="fixed token">
+      <created>1634412026735</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1634412026735</updated>
+    </task>
+    <task id="LOCAL-00013" summary="updates">
+      <created>1634412088859</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1634412088859</updated>
+    </task>
+    <task id="LOCAL-00014" summary="updates">
+      <created>1634412173435</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1634412173435</updated>
+    </task>
+    <task id="LOCAL-00015" summary="updates">
+      <created>1634412266875</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1634412266875</updated>
+    </task>
+    <task id="LOCAL-00016" summary="updates">
+      <created>1634442074055</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1634442074055</updated>
+    </task>
+    <task id="LOCAL-00017" summary="updates">
+      <created>1634442253620</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1634442253620</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -188,10 +244,13 @@
     <MESSAGE value="I changed in MoneyBank.txt" />
     <MESSAGE value="I changed a few things" />
     <MESSAGE value="Main2 changes to Main" />
-    <MESSAGE value="2" />
     <MESSAGE value="Changed token to a dif bot" />
     <MESSAGE value="Changes" />
     <MESSAGE value="9" />
+    <MESSAGE value="2" />
+    <MESSAGE value="nothing" />
+    <MESSAGE value="updated money values" />
+    <MESSAGE value="fixed token" />
     <MESSAGE value="updates" />
     <option name="LAST_COMMIT_MESSAGE" value="updates" />
   </component>
