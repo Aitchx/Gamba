@@ -196,6 +196,10 @@ class Gambling(commands.Cog):
 
     @commands.command(name='challenge', help=' -Roll dice against someone')
     async def fight(self, ctx, who, bet: int):
+        who = str(who).strip('<>')
+        who = str(who).strip('@!')
+        who = str(who).strip('@&')
+        username = await bot.fetch_user(who)
         my_file = open("MoneyBank.txt")
         string_list = my_file.readlines()
         my_file.close()
@@ -205,22 +209,215 @@ class Gambling(commands.Cog):
         print(clean_list)
         if str(ctx.author) not in clean_list:
             await ctx.send('You do not own a Bank Account ' + ctx.author.mention + ' please use "!new"')
+        elif str(username) not in clean_list:
+            await ctx.send(str(username) + ' does not own a Bank Account ' + ctx.author.mention + ' tell them to use "!new"')
         else:
             x = clean_list.index(str(ctx.author))
             y = clean_list[x + 1].strip()
+            challenged = clean_list.index(str(username))
+            c = clean_list[challenged + 1].strip()
             if (int(y) < bet) and (bet != 1):
                 await ctx.send("You don't have enough to bet that much idiot")
+            elif (int(challenged) < bet) and (bet != 1):
+                await ctx.send("The poor fuck doesn't have enough to bet that much")
+            elif username == ctx.author:
+                await ctx.send("You can't challenge yourself dumbfuck")
             else:
-                await ctx.send('Y or N')
-
                 def check(m):
-                    return m.content == "Yes"
+                    return m.content == "accept"
 
                 msg = await bot.wait_for("message", check=check)
-                await ctx.send(f"Hello {msg.author}!")
+                if username == msg.author:
+                    my_file = open("MoneyBank.txt")
+                    string_list = my_file.readlines()
+                    my_file.close()
+                    clean_list = []
+                    for i in string_list:
+                        clean_list.append(i.strip())
+                    print(clean_list)
+                    total = 0
+                    total_c = 0
+                    comp_1 = 0
+                    comp_2 = 0
+                    dice_1 = 0
+                    dice_2 = 0
+                    for i in range(1, 3):
+                        choices = [1, 2, 2, 2, 3, 4, 5, 5, 6, 6]
+                        dice = random.choice(choices)
+                        if i == 1:
+                            comp_1 += dice
+                        else:
+                            comp_2 += dice
+                        total_c += dice
+                    for i in range(1, 3):
+                        choices = [1, 2, 2, 3, 3, 4, 5, 6]
+                        dice = random.choice(choices)
+                        if i == 1:
+                            dice_1 += dice
+                        else:
+                            dice_2 += dice
+                        total += dice
+                    if total_c < total:
+                        response = '**You won!**'
+                        my_file = open("MoneyBank.txt")
+                        string_list = my_file.readlines()
+                        my_file.close()
+                        clean_list = []
+                        for i in string_list:
+                            clean_list.append(i.strip())
+                        x = clean_list.index(str(ctx.author))
+                        string_list[x + 1].strip()
+                        string_list[x + 1] = str(int(string_list[x + 1]) + bet)
+                        y = int(string_list[x + 1].strip())
+                        balance = 'New Balance: $' + "{:,}".format(y)
+                        if (x + 2) == len(string_list):
+                            my_file = open("MoneyBank.txt", "w")
+                            new_file_contents = "".join(string_list)
+                            my_file.write(new_file_contents)
+                            my_file.close()
+                        else:
+                            string_list[x + 1] += str('\n')
+                            my_file = open("MoneyBank.txt", "w")
+                            new_file_contents = "".join(string_list)
+                            my_file.write(new_file_contents)
+                            my_file.close()
+                            for i in string_list:
+                                clean_list.append(i.strip())
+                            x = clean_list.index(str(username))
+                            string_list[x + 1].strip()
+                            string_list[x + 1] = str(int(string_list[x + 1]) - bet)
+                            if (x + 2) == len(string_list):
+                                my_file = open("MoneyBank.txt", "w")
+                                new_file_contents = "".join(string_list)
+                                my_file.write(new_file_contents)
+                                my_file.close()
+                            else:
+                                string_list[x + 1] += str('\n')
+                                my_file = open("MoneyBank.txt", "w")
+                                new_file_contents = "".join(string_list)
+                                my_file.write(new_file_contents)
+                                my_file.close()
+                        embed = discord.Embed(title="Dice Roll | Competitor: " + str(ctx.author), description=
+                                              "**" + str(username) + "**\n" +
+                                              "Dice 1 = " + '**' + str(comp_1) + '**' + '\n'
+                                              "Dice 1 = " + '**' + str(comp_2) + '**' + '\n'
+                                              "Total = " + '**' + str(total_c) + '**' + '\n' + '\n' +
+                                              '**' + str(ctx.author) + '**' + ":"
+                                              "\nDice 1 = " + '**' + str(dice_1) + '**' + '\n'
+                                              "Dice 2 = " + '**' + str(dice_2) + '**' + '\n'
+                                              "Total = " + '**' + str(total) + '**' + '\n' +
+                                              response + ' ' + str(ctx.author.mention) +
+                                              "\n" + str(balance), color=44336)
+                        await ctx.send(embed=embed)
+                    elif total_c > total:
+                        response = '**You lost!**'
+                        my_file = open("MoneyBank.txt")
+                        string_list = my_file.readlines()
+                        my_file.close()
+                        clean_list = []
+                        for i in string_list:
+                            clean_list.append(i.strip())
+                        x = clean_list.index(str(ctx.author))
+                        string_list[x + 1].strip()
+                        string_list[x + 1] = str(int(string_list[x + 1]) - bet)
+                        y = int(string_list[x + 1].strip())
+                        balance = 'New Balance: $' + "{:,}".format(y)
+                        if (x + 2) == len(string_list):
+                            my_file = open("MoneyBank.txt", "w")
+                            new_file_contents = "".join(string_list)
+                            my_file.write(new_file_contents)
+                            my_file.close()
+                        else:
+                            string_list[x + 1] += str('\n')
+                            my_file = open("MoneyBank.txt", "w")
+                            new_file_contents = "".join(string_list)
+                            my_file.write(new_file_contents)
+                            my_file.close()
+                            for i in string_list:
+                                clean_list.append(i.strip())
+                            x = clean_list.index(str(username))
+                            string_list[x + 1].strip()
+                            string_list[x + 1] = str(int(string_list[x + 1]) + bet)
+                            if (x + 2) == len(string_list):
+                                my_file = open("MoneyBank.txt", "w")
+                                new_file_contents = "".join(string_list)
+                                my_file.write(new_file_contents)
+                                my_file.close()
+                            else:
+                                string_list[x + 1] += str('\n')
+                                my_file = open("MoneyBank.txt", "w")
+                                new_file_contents = "".join(string_list)
+                                my_file.write(new_file_contents)
+                                my_file.close()
+                        embed = discord.Embed(title="Dice Roll | Competitor: " + str(ctx.author), description=
+                                              "**" + str(username) + "**\n" +
+                                              "Dice 1 = " + '**' + str(comp_1) + '**' + '\n'
+                                              "Dice 1 = " + '**' + str(comp_2) + '**' + '\n'
+                                              "Total = " + '**' + str(total_c) + '**' + '\n' + '\n' +
+                                              '**' + str(ctx.author) + '**' + ":"
+                                              "\nDice 1 = " + '**' + str(dice_1) + '**' + '\n'
+                                              "Dice 2 = " + '**' + str(dice_2) + '**' + '\n'
+                                              "Total = " + '**' + str(total) + '**' + '\n' +
+                                              response + ' ' + str(ctx.author.mention) +
+                                              "\n" + str(balance), color=44336)
+                        await ctx.send(embed=embed)
+                    elif total_c == total:
+                        response = '**You Tied!**'
+                        my_file = open("MoneyBank.txt")
+                        string_list = my_file.readlines()
+                        my_file.close()
+                        clean_list = []
+                        for i in string_list:
+                            clean_list.append(i.strip())
+                        x = clean_list.index(str(ctx.author))
+                        string_list[x + 1].strip()
+                        string_list[x + 1] = str(int(string_list[x + 1]))
+                        y = int(string_list[x + 1].strip())
+                        balance = 'New Balance: $' + "{:,}".format(y)
+                        if (x + 2) == len(string_list):
+                            my_file = open("MoneyBank.txt", "w")
+                            new_file_contents = "".join(string_list)
+                            my_file.write(new_file_contents)
+                            my_file.close()
+                        else:
+                            string_list[x + 1] += str('\n')
+                            my_file = open("MoneyBank.txt", "w")
+                            new_file_contents = "".join(string_list)
+                            my_file.write(new_file_contents)
+                            my_file.close()
+                            for i in string_list:
+                                clean_list.append(i.strip())
+                            x = clean_list.index(str(username))
+                            string_list[x + 1].strip()
+                            string_list[x + 1] = str(int(string_list[x + 1]))
+                            if (x + 2) == len(string_list):
+                                my_file = open("MoneyBank.txt", "w")
+                                new_file_contents = "".join(string_list)
+                                my_file.write(new_file_contents)
+                                my_file.close()
+                            else:
+                                string_list[x + 1] += str('\n')
+                                my_file = open("MoneyBank.txt", "w")
+                                new_file_contents = "".join(string_list)
+                                my_file.write(new_file_contents)
+                                my_file.close()
+                        embed = discord.Embed(title="Dice Roll | Competitor: " + str(ctx.author), description=
+                                              "**" + str(username) + "**\n" +
+                                              "Dice 1 = " + '**' + str(comp_1) + '**' + '\n'
+                                              "Dice 1 = " + '**' + str(comp_2) + '**' + '\n'
+                                              "Total = " + '**' + str(total_c) + '**' + '\n' + '\n' +
+                                              '**' + str(ctx.author) + '**' + ":"
+                                              "\nDice 1 = " + '**' + str(dice_1) + '**' + '\n'
+                                              "Dice 2 = " + '**' + str(dice_2) + '**' + '\n'
+                                              "Total = " + '**' + str(total) + '**' + '\n' +
+                                              response + ' ' + str(ctx.author.mention) +
+                                              "\n" + str(balance), color=44336)
+                        await ctx.send(embed=embed)
+                else:
+                    await ctx.send("You weren't challenged idiot")
 
     @commands.command(name='roll', help='-Simulates rolling dice agaisnt Arnold|Ex: !roll_dice <total> <bet>')
-    @commands.cooldown(rate=1, per=2)
+    @commands.cooldown(rate=2, per=2)
     async def roll(self, ctx, bet: int):
         print('Roll Command ' + str(ctx.author))
         my_file = open("MoneyBank.txt")
