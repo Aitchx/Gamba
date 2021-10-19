@@ -300,7 +300,7 @@ class Gambling(commands.Cog):
                         embed = discord.Embed(title="Dice Roll | Competitor: " + str(ctx.author), description=
                                               "**" + str(username) + "**\n" +
                                               "Dice 1 = " + '**' + str(comp_1) + '**' + '\n'
-                                              "Dice 1 = " + '**' + str(comp_2) + '**' + '\n'
+                                              "Dice 2 = " + '**' + str(comp_2) + '**' + '\n'
                                               "Total = " + '**' + str(total_c) + '**' + '\n' + '\n' +
                                               '**' + str(ctx.author) + '**' + ":"
                                               "\nDice 1 = " + '**' + str(dice_1) + '**' + '\n'
@@ -352,7 +352,7 @@ class Gambling(commands.Cog):
                         embed = discord.Embed(title="Dice Roll | Competitor: " + str(ctx.author), description=
                                               "**" + str(username) + "**\n" +
                                               "Dice 1 = " + '**' + str(comp_1) + '**' + '\n'
-                                              "Dice 1 = " + '**' + str(comp_2) + '**' + '\n'
+                                              "Dice 2 = " + '**' + str(comp_2) + '**' + '\n'
                                               "Total = " + '**' + str(total_c) + '**' + '\n' + '\n' +
                                               '**' + str(ctx.author) + '**' + ":"
                                               "\nDice 1 = " + '**' + str(dice_1) + '**' + '\n'
@@ -404,7 +404,7 @@ class Gambling(commands.Cog):
                         embed = discord.Embed(title="Dice Roll | Competitor: " + str(ctx.author), description=
                                               "**" + str(username) + "**\n" +
                                               "Dice 1 = " + '**' + str(comp_1) + '**' + '\n'
-                                              "Dice 1 = " + '**' + str(comp_2) + '**' + '\n'
+                                              "Dice 2 = " + '**' + str(comp_2) + '**' + '\n'
                                               "Total = " + '**' + str(total_c) + '**' + '\n' + '\n' +
                                               '**' + str(ctx.author) + '**' + ":"
                                               "\nDice 1 = " + '**' + str(dice_1) + '**' + '\n'
@@ -491,7 +491,7 @@ class Gambling(commands.Cog):
                     embed = discord.Embed(title="Dice Roll | Competitor: " + str(ctx.author), description=
                                                 "**Arnold's Roll:**\n"
                                                 "Dice 1 = " + '**' + str(comp_1) + '**' + '\n'
-                                                "Dice 1 = " + '**' + str(comp_2) + '**' + '\n'
+                                                "Dice 2 = " + '**' + str(comp_2) + '**' + '\n'
                                                 "Total = " + '**' + str(total_c) + '**' + '\n' + '\n' +
                                                 '**' + str(ctx.author) + '**' + ":"
                                                 "\nDice 1 = " + '**' + str(dice_1) + '**' + '\n'
@@ -526,7 +526,7 @@ class Gambling(commands.Cog):
                     embed = discord.Embed(title="Dice Roll | Competitor: " + str(ctx.author), description=
                                                 "**Arnold's Roll:**\n"
                                                 "Dice 1 = " + '**' + str(comp_1) + '**' + '\n'
-                                                "Dice 1 = " + '**' + str(comp_2) + '**' + '\n'
+                                                "Dice 2 = " + '**' + str(comp_2) + '**' + '\n'
                                                 "Total = " + '**' + str(total_c) + '**' + '\n' + '\n' +
                                                 '**' + str(ctx.author) + '**' + ":"
                                                 "\nDice 1 = " + '**' + str(dice_1) + '**' + '\n'
@@ -564,7 +564,7 @@ class Gambling(commands.Cog):
                     embed = discord.Embed(title="Dice Roll | Competitor: " + str(ctx.author), description=
                                                 "**Arnold's Roll:**\n"
                                                 "Dice 1 = " + '**' + str(comp_1) + '**' + '\n'
-                                                "Dice 1 = " + '**' + str(comp_2) + '**' + '\n'
+                                                "Dice 2 = " + '**' + str(comp_2) + '**' + '\n'
                                                 "Total = " + '**' + str(total_c) + '**' + '\n' + '\n' +
                                                 '**' + str(ctx.author) + '**' + ":"
                                                 "\nDice 1 = " + '**' + str(dice_1) + '**' + '\n'
