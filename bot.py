@@ -226,7 +226,7 @@ class Gambling(commands.Cog):
                 def check(m):
                     return m.content == "accept"
 
-                msg = await bot.wait_for("message", check=check)
+                msg = await bot.wait_for("message", check=check, timeout=60)
                 if username == msg.author:
                     my_file = open("MoneyBank.txt")
                     string_list = my_file.readlines()
