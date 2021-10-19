@@ -242,7 +242,7 @@ class Gambling(commands.Cog):
                     dice_1 = 0
                     dice_2 = 0
                     for i in range(1, 3):
-                        choices = [1, 2, 2, 2, 3, 4, 5, 5, 6, 6]
+                        choices = [1, 2, 3, 4, 5, 6]
                         dice = random.choice(choices)
                         if i == 1:
                             comp_1 += dice
@@ -250,7 +250,7 @@ class Gambling(commands.Cog):
                             comp_2 += dice
                         total_c += dice
                     for i in range(1, 3):
-                        choices = [1, 2, 2, 3, 3, 4, 5, 6]
+                        choices = [1, 2, 3, 4, 5, 6]
                         dice = random.choice(choices)
                         if i == 1:
                             dice_1 += dice
