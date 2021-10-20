@@ -474,7 +474,7 @@ class Gambling(commands.Cog):
                     if (total - total_c) > 5:
                         string_list[x + 1] = str(int(string_list[x + 1]) + int(bet * 3))
                     elif (total - total_c) > 3:
-                        string_list[x + 1] = str(int(string_list[x + 1]) + int(bet * 1.7))
+                        string_list[x + 1] = str(int(string_list[x + 1]) + int(bet * 2.5))
                     else:
                         string_list[x + 1] = str(int(string_list[x + 1]) + (bet * 2))
                     y = int(string_list[x + 1].strip())
