@@ -192,6 +192,76 @@ class Gambling(commands.Cog):
         balance = str(balance).replace("'", '')
         balance = str(balance).strip(",")
         await ctx.send(balance + ' ' + str(ctx.author.mention))
+        
+        
+    @commands.command(name='megabeg', help=' -You go to the streets to beg for silver')
+    @commands.cooldown(1, 3600, commands.BucketType.user)
+    async def begging(self, ctx):
+        my_file = open("MoneyBank.txt")
+        string_list = my_file.readlines()
+        my_file.close()
+        clean_list = []
+        for i in string_list:
+            clean_list.append(i.strip())
+        x = clean_list.index(str(ctx.author))
+        y = int(clean_list[x + 1].strip())
+        more = random.choice(range(100000, 500000))
+        print(more)
+        string_list[x + 1].strip()
+        await ctx.send('Given: ' + str(more))
+        string_list[x + 1] = str(int(string_list[x + 1]) + more)
+        balance = 'New Balance: $' + "{:,}".format(int(string_list[x + 1]))
+        if (x + 2) == len(string_list):
+            my_file = open("MoneyBank.txt", "w")
+            new_file_contents = "".join(string_list)
+            my_file.write(new_file_contents)
+            my_file.close()
+        else:
+            string_list[x + 1] += str('\n')
+            my_file = open("MoneyBank.txt", "w")
+            new_file_contents = "".join(string_list)
+            my_file.write(new_file_contents)
+            my_file.close()
+        balance = str(balance).strip('()')
+        balance = str(balance).replace("'", '')
+        balance = str(balance).strip(",")
+        await ctx.send(balance + ' ' + str(ctx.author.mention))
+        
+        
+        
+        
+    @commands.command(name='ultrabeg', help=' -You go to the streets to beg for gold')
+    @commands.cooldown(1, 86400, commands.BucketType.user)
+    async def begging(self, ctx):
+        my_file = open("MoneyBank.txt")
+        string_list = my_file.readlines()
+        my_file.close()
+        clean_list = []
+        for i in string_list:
+            clean_list.append(i.strip())
+        x = clean_list.index(str(ctx.author))
+        y = int(clean_list[x + 1].strip())
+        more = random.choice(range(1000000, 2000000))
+        print(more)
+        string_list[x + 1].strip()
+        await ctx.send('Given: ' + str(more))
+        string_list[x + 1] = str(int(string_list[x + 1]) + more)
+        balance = 'New Balance: $' + "{:,}".format(int(string_list[x + 1]))
+        if (x + 2) == len(string_list):
+            my_file = open("MoneyBank.txt", "w")
+            new_file_contents = "".join(string_list)
+            my_file.write(new_file_contents)
+            my_file.close()
+        else:
+            string_list[x + 1] += str('\n')
+            my_file = open("MoneyBank.txt", "w")
+            new_file_contents = "".join(string_list)
+            my_file.write(new_file_contents)
+            my_file.close()
+        balance = str(balance).strip('()')
+        balance = str(balance).replace("'", '')
+        balance = str(balance).strip(",")
+        await ctx.send(balance + ' ' + str(ctx.author.mention))
 
 
     @commands.command(name='challenge', help=' -Roll dice against someone, Ex !challenge @user bet')
