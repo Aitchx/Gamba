@@ -196,7 +196,7 @@ class Gambling(commands.Cog):
         
     @commands.command(name='megabeg', help=' -You go to the streets to beg for silver')
     @commands.cooldown(1, 3600, commands.BucketType.user)
-    async def begging(self, ctx):
+    async def beggingMega(self, ctx):
         my_file = open("MoneyBank.txt")
         string_list = my_file.readlines()
         my_file.close()
@@ -232,7 +232,7 @@ class Gambling(commands.Cog):
         
     @commands.command(name='ultrabeg', help=' -You go to the streets to beg for gold')
     @commands.cooldown(1, 86400, commands.BucketType.user)
-    async def begging(self, ctx):
+    async def beggingUltra(self, ctx):
         my_file = open("MoneyBank.txt")
         string_list = my_file.readlines()
         my_file.close()
