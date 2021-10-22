@@ -1,10 +1,10 @@
 start
 MIst#2648
-2562869
+4793834
 Aitch#1111
-601488362
+601488365
 arctic#0235
-42
+9861
 yoppa#0067
 36930
 obamaatemykfc#4212
@@ -12,8 +12,8 @@ obamaatemykfc#4212
 LilGod#7242
 8
 MorbidSoul#1708
-0
+230039
 Matchedmars2#6361
 37674216
 Adulteries#0001
-3872
+318162
