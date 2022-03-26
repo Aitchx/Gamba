@@ -1,11 +1,10 @@
-```
 import os
 import random
 
 from dotenv import load_dotenv
 from discord.ext import commands
 import discord
-```
+
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 help_command = commands.DefaultHelpCommand(no_category='Main Commands')
