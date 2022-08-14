@@ -1,4 +1,3 @@
 start
-**This acts as the bank for the Gambling bot, when users use the gambling bot commands and do not have a bank account registered, they will be asked to register to a bank with a command, which in return adds their username on the txt file.**
 Aitch#1111
 601488365
