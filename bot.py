@@ -6,20 +6,27 @@ from discord.ext import commands
 import discord
 
 load_dotenv()
+'''Token in .env file will be placed here'''
 TOKEN = os.getenv('DISCORD_TOKEN')
+'''This will display the help comands, with 'Main Comands, when people do !help'''
 help_command = commands.DefaultHelpCommand(no_category='Main Commands')
+'''This sets the prefix that people will use to use a command '!''''
 bot = commands.Bot(command_prefix='!',description = 'Commands', help_command = help_command)
 
-
+'''bot.event will run as soon as the bot is turned on'''
 @bot.event
 async def on_ready():
+    '''Will return in the command promp , that the bot is online'''
     print(f'{bot.user.name} has connected to Discord!')
 
-
-@bot.command(name='hello', help=' -Response with a welcome comment')
+'''set a bot command for users to use, in this example !hello is the command'''
+@bot.command(name='hello', help=' -Response with a welcome comment') '''help= will show the description of the command of what it does in the !help table'''
 async def welcome(ctx):
-    same = 'Hey ' + str(ctx.author.mention), 'Hey Baby', 'Hellooo!', 'Eat Shit ' + str(ctx.author.mention)
+    '''I added some responses that will be defined to the variable same'''
+    same = 'Hey ' + str(ctx.author.mention), 'Hey Baby', 'Hellooo!', 'Eat Shit ' + str(ctx.author.mention) '''here ctx.author.mention will @ the author of the command'''
+    '''using the random module will pick a random choice'''
     response = random.choice(same)
+    '''sends the response to the user'''
     await ctx.send(response)
 
 @bot.command(name='send', help=' -This will send money to someone.')
