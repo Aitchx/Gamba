@@ -1,19 +1,4 @@
 start
-MIst#2648
-4793834
+**This acts as the bank for the Gambling bot, when users use the gambling bot commands and do not have a bank account registered, they will be asked to register to a bank with a command, which in return adds their username on the txt file.**
 Aitch#1111
 601488365
-arctic#0235
-9861
-yoppa#0067
-36930
-obamaatemykfc#4212
-4209998
-LilGod#7242
-8
-MorbidSoul#1708
-230039
-Matchedmars2#6361
-37674216
-Adulteries#0001
-318162
